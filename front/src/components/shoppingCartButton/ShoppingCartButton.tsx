@@ -1,7 +1,8 @@
 import React from "react";
-import { ShoppingCartBtn } from "./shoppingCartButton.styles";
+
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ShoppingCartBtn } from "./shoppingCartButton.styles";
 
 const ShoppingCartButton = () => {
   return (
