@@ -23,9 +23,7 @@ const BookList = () => {
   const renderBooks = () => {
     return books.map((book) => {
       return (
-        <>
           <BookProposition key={book.id} book={book} />
-        </>
       );
     });
   };

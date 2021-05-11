@@ -9,5 +9,6 @@ export interface Book {
 }
 
 export interface BookPropositionProps {
+  key: number,
   book: Book;
 }
