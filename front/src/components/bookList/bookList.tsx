@@ -24,7 +24,7 @@ const BookList = () => {
     return books.map((book) => {
       return (
         <>
-          <BookProposition book={book} />
+          <BookProposition key={book.id} book={book} />
         </>
       );
     });

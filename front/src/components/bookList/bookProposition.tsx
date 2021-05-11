@@ -15,7 +15,7 @@ import {
 const BookProposition = (props: BookPropositionProps) => {
   const {book} = props;
   return (
-    <BookSection key={book.id}>
+    <BookSection >
       <CoverArea>
         <Cover coverUrl={book.cover_url} />
       </CoverArea>
