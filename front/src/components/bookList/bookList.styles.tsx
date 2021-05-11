@@ -6,7 +6,7 @@ interface CoverProps {
 
 export const BookSection = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin: 1rem auto;
   border: 2px solid #333;
@@ -14,10 +14,15 @@ export const BookSection = styled.div`
   height: 10rem;
 `;
 
-export const Cover = styled.div<CoverProps>`
+export const CoverArea = styled.div`
   margin: 0 auto;
-  width: 7rem;
-  height: 7rem;
+  padding: 1rem;
+  width:100%;
+  height: 10rem;
+`;
+export const Cover = styled.div<CoverProps>`
+  width: 100%;
+  height: 100%;
   background-image: url("${(props: CoverProps) => {
     return props.coverUrl !== undefined
       ? props.coverUrl
@@ -28,3 +33,23 @@ export const Cover = styled.div<CoverProps>`
   background-size: contain;
   color: black;
 `;
+
+export const BookDescriptionArea = styled.div`
+  width: 100%;
+  border: 2px solid red;
+`;
+
+export const BookTitle = styled.div`
+color:red;
+`;
+
+export const BookDetails = styled.div`
+color:green
+`
+
+export const DetailTitle = styled.div`
+color:grey;
+`
+export const DetailContent = styled.div`
+color: orange;
+`
