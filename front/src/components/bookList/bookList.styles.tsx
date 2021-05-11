@@ -17,7 +17,7 @@ export const BookSection = styled.div`
 export const CoverArea = styled.div`
   margin: 0 auto;
   padding: 1rem;
-  width:100%;
+  width: 100%;
   height: 10rem;
 `;
 export const Cover = styled.div<CoverProps>`
@@ -40,16 +40,16 @@ export const BookDescriptionArea = styled.div`
 `;
 
 export const BookTitle = styled.div`
-color:red;
+  color: red;
 `;
 
 export const BookDetails = styled.div`
-color:green
-`
+  color: green;
+`;
 
 export const DetailTitle = styled.div`
-color:grey;
-`
+  color: grey;
+`;
 export const DetailContent = styled.div`
-color: orange;
-`
+  color: orange;
+`;
