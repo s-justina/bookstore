@@ -1,30 +1,33 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useEffect } from "react";
 
 import BookProposition from "./bookProposition";
 import { fetchBooks } from "../../utils/API_network_functions";
 import { Book } from "./interfaces";
+import { useDispatch, useSelector } from "react-redux";
+import { saveFetchedBooks } from "../../actions/books.actions";
+import { AppState } from "../../reducers/root.reducer";
 
 const BookList = () => {
-  const [books, setBooks] = useState<Book[]>([]);
-
+  const books = useSelector<AppState, Book[]>((state) => state.books);
+  const dispatch = useDispatch();
   useEffect(() => {
-    fetchBooks()
-      .then((res) => {
-        const { data } = res.data;
-        setBooks(data);
-      })
-      .catch(function (error) {
-        console.log("error", error);
-      });
+    if (books.length === 0) {
+      fetchBooks()
+        .then((res) => {
+          const { data } = res.data;
+          dispatch(saveFetchedBooks(data));
+        })
+        .catch(function (error) {
+          console.log("error", error);
+        });
+    }
   }, []);
 
   console.log("books", books);
 
   const renderBooks = () => {
     return books.map((book) => {
-      return (
-          <BookProposition key={book.id} book={book} />
-      );
+      return <BookProposition key={book.id} book={book} />;
     });
   };
 
