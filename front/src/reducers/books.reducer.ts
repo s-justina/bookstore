@@ -1,4 +1,4 @@
-import { Book } from "../components/bookList/interfaces";
+import { Book } from "../components/BookList/interfaces";
 import {BookActionsNames} from "../actions/books.actions";
 
 const initialState: Book[] = [

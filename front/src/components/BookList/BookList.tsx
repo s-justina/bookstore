@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect } from "react";
 
-import BookProposition from "./bookProposition";
+import BookListItem from "./BookListItem";
 import { fetchBooks } from "../../utils/API_network_functions";
 import { Book } from "./interfaces";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,7 +27,7 @@ const BookList = () => {
 
   const renderBooks = () => {
     return books.map((book) => {
-      return <BookProposition key={book.id} book={book} />;
+      return <BookListItem key={book.id} book={book} />;
     });
   };
 

@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux'
 import booksReducer from './books.reducer'
-import {Book} from "../components/bookList/interfaces";
+import {Book} from "../components/BookList/interfaces";
 import cartReducer from "./cart.reducer";
 
 export interface AppState {

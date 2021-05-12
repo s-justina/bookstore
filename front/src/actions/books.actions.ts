@@ -1,4 +1,4 @@
-import {Book} from "../components/bookList/interfaces";
+import {Book} from "../components/BookList/interfaces";
 
 export enum BookActionsNames {
     FETCH_BOOKS = 'FETCH_BOOKS'

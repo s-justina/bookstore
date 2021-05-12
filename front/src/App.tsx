@@ -1,7 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, useHistory  } from "react-router-dom";
 import { Provider } from "react-redux";
-import Home from "./containers/home";
+import Home from "./pages/home";
+import Cart from "./pages/Cart";
 import store from "./reducers/store";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Switch>
               <Route path="/about">{/*<About />*/}</Route>
               <Route path="/users">{/*<Users />*/}</Route>
+              <Route path="/cart"><Cart /></Route>
               <Route path="/">
                 <Home />
               </Route>
