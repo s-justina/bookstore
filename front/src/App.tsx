@@ -1,8 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link, useHistory  } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link  } from "react-router-dom";
 import { Provider } from "react-redux";
 import Home from "./pages/home";
-import Cart from "./pages/Cart";
+import Cart from "./containers/Cart";
 import store from "./reducers/store";
 
 function App() {
