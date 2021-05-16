@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import Home from "./pages/home";
 import Cart from "./containers/Cart";
 import store from "./reducers/store";
+import Summary from "./pages/Summary";
 
 function App() {
   return (
@@ -16,24 +17,17 @@ function App() {
                 <li>
                   <Link to="/">Home</Link>
                 </li>
-                <li>
-                  <Link to="/about">About</Link>
-                </li>
-                <li>
-                  <Link to="/users">Users</Link>
-                </li>
               </ul>
             </nav>
 
             {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
             <Switch>
-              <Route path="/about">{/*<About />*/}</Route>
-              <Route path="/users">{/*<Users />*/}</Route>
-              <Route path="/cart"><Cart /></Route>
-              <Route path="/">
+              <Route exact path="/">
                 <Home />
               </Route>
+              <Route path="/cart"><Cart /></Route>
+              <Route path="/summary"><Summary /></Route>
             </Switch>
           </div>
         </Router>
