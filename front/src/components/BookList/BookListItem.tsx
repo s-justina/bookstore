@@ -40,6 +40,9 @@ const BookListItem = (props: BookPropositionProps) => {
           <DetailTitle>
             Liczba stron: <DetailContent>{book.pages}</DetailContent>
           </DetailTitle>
+          <DetailTitle>
+            Cena: <BookDetails>{(book.price/100).toFixed(2) + ' PLN'}</BookDetails>
+          </DetailTitle>
           <button onClick={onAddToCartClick}>Dodaj do koszyka</button>
         </BookDetails>
       </BookDescriptionArea>

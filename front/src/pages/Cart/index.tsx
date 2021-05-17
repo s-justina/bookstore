@@ -1,10 +1,10 @@
 import React from "react";
-import {
-  CartActionsNames,
-} from "../../actions/cart.actions";
+import { CartActionsNames } from "../../actions/cart.actions";
 import { CartBook } from "../../reducers/cart.reducer";
 import { CartListItem } from "../../components/Cart/CartListItem";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setOrderSummary } from "../../actions/order.actions";
 
 interface CartProps {
   onDecrementClick: (
@@ -16,6 +16,7 @@ interface CartProps {
   onRemoveFromCartClick: (bookID: number) => void;
   cartTotalPrice: string;
   cart: CartBook[];
+  onNextButtonPress: () => void
 }
 
 const Cart: React.FC<CartProps> = ({
@@ -24,15 +25,13 @@ const Cart: React.FC<CartProps> = ({
   cart,
   onDecrementClick,
   onIncrementClick,
+                                     onNextButtonPress
 }) => {
-
-  const history = useHistory();
-
   const renderCart = () => {
     return cart.map((book) => {
       return (
         <CartListItem
-            key={book.id}
+          key={book.id}
           book={book}
           onDecrementClick={() => onDecrementClick(book.id)}
           onIncrementClick={() => onIncrementClick(book.id)}
@@ -42,6 +41,8 @@ const Cart: React.FC<CartProps> = ({
     });
   };
 
+
+
   return (
     <>
       {renderCart()}
@@ -50,7 +51,12 @@ const Cart: React.FC<CartProps> = ({
       >
         <p>Total price: {cartTotalPrice}</p>
       </div>
-      <button style={{display: "block", margin: "0 80%"}} onClick = {()=>history.push('/summary')}>Dalej</button>
+      <button
+        style={{ display: "block", margin: "0 80%" }}
+        onClick={onNextButtonPress}
+      >
+        Dalej
+      </button>
     </>
   );
 };

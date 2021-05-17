@@ -1,6 +1,9 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { useSelector } from "react-redux";
+import { AppState } from "../../reducers/root.reducer";
+import { OrderSummary } from "../../reducers/order.reducer";
 
 export interface formValidation {
   firstName: string;
@@ -10,6 +13,9 @@ export interface formValidation {
 }
 
 const Summary = () => {
+  const orderSummary = useSelector<AppState, OrderSummary>(
+    (state) => state.orderSummary
+  );
   return (
     <Formik
       initialValues={{
@@ -32,6 +38,12 @@ const Summary = () => {
           ),
       })}
       onSubmit={(values, { setSubmitting }) => {
+        const { firstName, lastName, city, postalCode } = values;
+        const dataToSend = {
+          personalData: { firstName, lastName, city, postalCode },
+          orderData: orderSummary,
+        };
+        console.log("dataToSend", dataToSend);
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
           setSubmitting(false);

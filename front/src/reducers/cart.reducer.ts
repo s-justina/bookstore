@@ -1,22 +1,11 @@
 import { Book } from "../components/BookList/interfaces";
-import {BookActionsNames} from "../actions/books.actions";
 import {CartActionsNames} from "../actions/cart.actions";
 
 export interface CartBook extends Book{
     quantity: number
 }
 
-const initialState: CartBook[] = [
-    // {
-    //   author: "",
-    //   cover_url: "",
-    //   currency: "",
-    //   id: 0,
-    //   pages: 0,
-    //   price: 0,
-    //   title: "",
-    // },
-];
+const initialState: CartBook[] = [];
 
 interface cartAction {
     payload: any,
@@ -26,7 +15,7 @@ interface cartAction {
 const cartReducer = (state = initialState, action: cartAction) => {
     switch (action.type) {
         case CartActionsNames.ADD_TO_CART:
-            const bookInCart = state.find(book => book.id === action.payload.id)
+            const bookInCart = state.find(book => book.id === action.payload.id);
             if(bookInCart){
                 ++bookInCart.quantity
                 return state
