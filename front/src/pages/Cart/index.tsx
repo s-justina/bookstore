@@ -32,6 +32,7 @@ const Cart: React.FC<CartProps> = ({
     return cart.map((book) => {
       return (
         <CartListItem
+            key={book.id}
           book={book}
           onDecrementClick={() => onDecrementClick(book.id)}
           onIncrementClick={() => onIncrementClick(book.id)}
