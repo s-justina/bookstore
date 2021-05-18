@@ -1,15 +1,21 @@
 import React from "react";
+import axios from "axios";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useSelector } from "react-redux";
 import { AppState } from "../../reducers/root.reducer";
-import { OrderSummary } from "../../reducers/order.reducer";
+import {BookSummary, OrderSummary} from "../../reducers/order.reducer";
+import { sendOrder } from "../../utils/API_network_functions";
 
-export interface formValidation {
-  firstName: string;
-  lastName: string;
+interface FormData {
+  first_name: string;
+  last_name: string;
   city: string;
-  postalCode: string;
+  zip_code: string;
+}
+
+export interface OrderToSend extends FormData{
+  order: BookSummary[];
 }
 
 const Summary = () => {
@@ -40,14 +46,20 @@ const Summary = () => {
       onSubmit={(values, { setSubmitting }) => {
         const { firstName, lastName, city, postalCode } = values;
         const dataToSend = {
-          personalData: { firstName, lastName, city, postalCode },
-          orderData: orderSummary,
+          first_name: firstName,
+          last_name: lastName,
+          city,
+          zip_code: postalCode,
+          order: orderSummary.books,
         };
-        console.log("dataToSend", dataToSend);
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+        sendOrder(dataToSend)
+          .then((res) => {
+            const { data } = res.data;
+            console.log("response", data);
+          })
+          .catch(function (error) {
+            console.log("error", error);
+          });
       }}
     >
       <Form>

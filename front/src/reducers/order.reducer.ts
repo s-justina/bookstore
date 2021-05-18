@@ -7,7 +7,7 @@ export interface BookSummary {
 
 export interface OrderSummary {
   books: BookSummary[];
-  totalPrice: number;
+  totalPrice?: number;
 }
 
 interface orderAction {
