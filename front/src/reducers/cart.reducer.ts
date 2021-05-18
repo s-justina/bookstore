@@ -1,5 +1,6 @@
 import { Book } from "../components/BookList/interfaces";
 import {CartActionsNames} from "../actions/cart.actions";
+import {REHYDRATE} from "redux-persist/es/constants";
 
 export interface CartBook extends Book{
     quantity: number
@@ -40,6 +41,8 @@ const cartReducer = (state = initialState, action: cartAction) => {
             });
         case CartActionsNames.REMOVE_FROM_CART:
             return state.filter(book => book.id !== action.payload);
+        case REHYDRATE:
+            return action.payload.cart || state;
         default:
             return state;
     }

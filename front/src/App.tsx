@@ -1,14 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link  } from "react-router-dom";
 import { Provider } from "react-redux";
+import { PersistGate } from 'redux-persist/integration/react'
 import Home from "./pages/home";
 import Cart from "./containers/Cart";
-import store from "./reducers/store";
+import {store, persistor} from "./reducers/store";
 import Summary from "./pages/Summary";
 
 function App() {
   return (
     <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
       <div className="App">
         <Router>
           <div>
@@ -32,6 +34,7 @@ function App() {
           </div>
         </Router>
       </div>
+      </PersistGate>
     </Provider>
   );
 }

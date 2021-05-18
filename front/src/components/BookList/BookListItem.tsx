@@ -1,5 +1,6 @@
 import React from "react";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { BookPropositionProps } from "./interfaces";
 import {
   BookDescriptionArea,
@@ -20,6 +21,15 @@ const BookListItem = (props: BookPropositionProps) => {
 
   const onAddToCartClick = () => {
     dispatch(addToCart(book));
+    toast.success('✔️ Pomyślnie dodano do koszyka!', {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   const onRemoveFromCartClick = () => {
@@ -44,6 +54,16 @@ const BookListItem = (props: BookPropositionProps) => {
             Cena: <BookDetails>{(book.price/100).toFixed(2) + ' PLN'}</BookDetails>
           </DetailTitle>
           <button onClick={onAddToCartClick}>Dodaj do koszyka</button>
+          <ToastContainer
+              position="bottom-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover/>
         </BookDetails>
       </BookDescriptionArea>
     </BookSection>
