@@ -6,12 +6,15 @@ interface CoverProps {
 
 export const BookSection = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  margin: 1rem auto;
-  border: 2px solid #333;
+  margin: 0.5rem auto;
   width: 80%;
-  height: 10rem;
+  height: 12rem;
+  @media (max-width: 700px) {
+    flex-direction: column;
+    height: 100%;
+  }
 `;
 
 export const CoverArea = styled.div`
@@ -19,6 +22,11 @@ export const CoverArea = styled.div`
   padding: 1rem;
   width: 100%;
   height: 10rem;
+  flex: 2;
+
+  @media (max-width: 700px) {
+    flex: 4;
+  }
 `;
 export const Cover = styled.div<CoverProps>`
   width: 100%;
@@ -32,24 +40,87 @@ export const Cover = styled.div<CoverProps>`
   background-position: center;
   background-size: contain;
   color: black;
+  @media (max-width: 700px) {
+    height: 10rem;
+  }
 `;
 
 export const BookDescriptionArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: left;
   width: 100%;
-  border: 2px solid red;
+  flex: 6;
+
+  @media (max-width: 700px) {
+    flex: 4;
+  }
 `;
 
 export const BookTitle = styled.div`
-  color: red;
+  flex: 3;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #333;
+    @media (max-width: 700px) {
+   text-align: center;
+  }
 `;
 
 export const BookDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
   color: green;
+  flex: 7;
+     @media (max-width: 700px) {
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 export const DetailTitle = styled.div`
-  color: grey;
+  color: #aaa;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 0.8rem;
+  
 `;
+
 export const DetailContent = styled.div`
-  color: orange;
+  color: #333;
+  font-family: "Roboto", sans-serif;
+  font-style: italic;
+  font-size: 1rem;
+`;
+
+export const AddBookToCartBtn = styled.button`
+  flex: 2;
+  display: inline-block;
+  margin: 5px;
+  padding: 15px;
+  border: none;
+  border-radius: 50px;
+  background: #60a3bc;
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.4s ease 0s;
+  cursor: pointer;
+
+    &:hover {
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+    -webkit-box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.57);
+    -moz-box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.57);
+  }
+
+  @media (max-width: 700px) {
+    flex: 2;
+    &:hover{
+    text-shadow: none;
+    box-shadow: none;
+    }
+  }
 `;

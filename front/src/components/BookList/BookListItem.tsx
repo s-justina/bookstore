@@ -3,6 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BookPropositionProps } from "./interfaces";
 import {
+  AddBookToCartBtn,
   BookDescriptionArea,
   BookDetails,
   BookSection,
@@ -51,21 +52,21 @@ const BookListItem = (props: BookPropositionProps) => {
             Liczba stron: <DetailContent>{book.pages}</DetailContent>
           </DetailTitle>
           <DetailTitle>
-            Cena: <BookDetails>{(book.price/100).toFixed(2) + ' PLN'}</BookDetails>
+            Cena: <DetailContent style={{color: 'green'}}>{(book.price/100).toFixed(2) + ' PLN'}</DetailContent>
           </DetailTitle>
-          <button onClick={onAddToCartClick}>Dodaj do koszyka</button>
-          <ToastContainer
-              position="bottom-center"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover/>
         </BookDetails>
       </BookDescriptionArea>
+      <AddBookToCartBtn onClick={onAddToCartClick}>Dodaj do koszyka</AddBookToCartBtn>
+      <ToastContainer
+          position="bottom-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover/>
     </BookSection>
   );
 };
