@@ -15,7 +15,7 @@ const BookList = () => {
       fetchBooks()
         .then((res) => {
           const { data } = res.data;
-          dispatch(saveFetchedBooks(data));
+          setTimeout(() => dispatch(saveFetchedBooks(data)), 5000);
         })
         .catch(function (error) {
           console.log("error", error);
@@ -23,21 +23,28 @@ const BookList = () => {
     }
   }, []);
 
-  console.log("books", books);
-
   const renderBooks = () => {
     return books.map((book) => {
       return <BookListItem key={book.id} book={book} />;
     });
   };
 
-  return (
-    <>
-      <Suspense fallback={() => "Loading..."}>
-        {books.length > 0 && renderBooks()}
-      </Suspense>
-    </>
-  );
+  if (books.length === 0) {
+    return (
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+      >
+        <h1>"Loading..."</h1>
+      </div>
+    );
+  }
+
+  return <>{books.length > 0 && renderBooks()}</>;
 };
 
 export default BookList;
