@@ -26,7 +26,7 @@ export const CoverArea = styled.div`
   flex: 2;
 
   @media (max-width: 768px) {
-    padding-bottom: .8rem;
+    padding-bottom: 0.8rem;
     flex: 4;
   }
 `;
@@ -42,7 +42,7 @@ export const Cover = styled.div<CoverProps>`
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  color: black;
+  color: #333;
 
   @media (max-width: 768px) {
     height: 10rem;
@@ -106,7 +106,7 @@ export const AddBookToCartBtn = styled.button`
   border: none;
   border-radius: 50px;
   background: #60a3bc;
-  color: #fff !important;
+  color: #fff;
   text-transform: uppercase;
   text-decoration: none;
   transition: all 0.4s ease 0s;

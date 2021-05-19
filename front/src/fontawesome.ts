@@ -3,6 +3,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 
 // import your icons
 import {faCode, faHighlighter, faMinus, faPlus, fas, faShoppingCart} from '@fortawesome/free-solid-svg-icons';
+import {faArrowRight} from "@fortawesome/free-solid-svg-icons/faArrowRight";
 
 library.add(
     faCode,
@@ -10,6 +11,7 @@ library.add(
     fas,
     faShoppingCart,
     faPlus,
-    faMinus
+    faMinus,
+    faArrowRight
     // more icons go here
 );

@@ -4,6 +4,10 @@ import { CartActionsNames } from "../../actions/cart.actions";
 import { CartBook } from "../../reducers/cart.reducer";
 
 import { CartListItem } from "../../components/Cart/CartListItem";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
+
+import { BuyBooksBtn, TotalPriceInfo } from "../../components/Cart/Cart.styles";
 
 interface CartProps {
   onDecrementClick: (
@@ -26,6 +30,13 @@ const Cart: React.FC<CartProps> = ({
   cartTotalPrice,
   cart,
 }) => {
+  const arrowStyles = {
+    paddingLeft: "0.5rem",
+    marginRight: "15px",
+    cursor: "pointer",
+    transition: "0.3s",
+  };
+
   const renderCart = () => {
     return cart.map((book) => {
       return (
@@ -43,17 +54,13 @@ const Cart: React.FC<CartProps> = ({
   return (
     <>
       {renderCart()}
-      <div
-        style={{ width: "80%", display: "flex", justifyContent: "flex-end" }}
-      >
-        <p>Total price: {cartTotalPrice}</p>
-      </div>
-      <button
-        style={{ display: "block", margin: "0 80%" }}
-        onClick={onNextButtonPress}
-      >
+      <TotalPriceInfo>
+        <p>Wartość zamówienia: {cartTotalPrice}</p>
+      </TotalPriceInfo>
+      <BuyBooksBtn onClick={onNextButtonPress}>
         Dalej
-      </button>
+        <FontAwesomeIcon icon={faArrowRight} style={arrowStyles} />
+      </BuyBooksBtn>
     </>
   );
 };

@@ -54,7 +54,7 @@ export const CoverBookInCart = styled.div<CoverProps>`
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  color: black;
+  color: #333;
 
   @media (max-width: 900px) {
     height: 10rem;
