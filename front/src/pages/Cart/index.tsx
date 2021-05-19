@@ -1,10 +1,9 @@
 import React from "react";
+
 import { CartActionsNames } from "../../actions/cart.actions";
 import { CartBook } from "../../reducers/cart.reducer";
+
 import { CartListItem } from "../../components/Cart/CartListItem";
-import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setOrderSummary } from "../../actions/order.actions";
 
 interface CartProps {
   onDecrementClick: (
@@ -14,18 +13,18 @@ interface CartProps {
     bookID: number
   ) => { payload: number; type: CartActionsNames };
   onRemoveFromCartClick: (bookID: number) => void;
+  onNextButtonPress: () => void;
   cartTotalPrice: string;
   cart: CartBook[];
-  onNextButtonPress: () => void
 }
 
 const Cart: React.FC<CartProps> = ({
-  cartTotalPrice,
-  onRemoveFromCartClick,
-  cart,
   onDecrementClick,
   onIncrementClick,
-                                     onNextButtonPress
+  onRemoveFromCartClick,
+  onNextButtonPress,
+  cartTotalPrice,
+  cart,
 }) => {
   const renderCart = () => {
     return cart.map((book) => {
@@ -40,8 +39,6 @@ const Cart: React.FC<CartProps> = ({
       );
     });
   };
-
-
 
   return (
     <>

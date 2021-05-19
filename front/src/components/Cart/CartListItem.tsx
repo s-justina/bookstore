@@ -1,14 +1,27 @@
+import React from "react";
+
 import { CartBook } from "../../reducers/cart.reducer";
-import {
-  BookSection,
-  BookTitle,
-  Cover,
-  CoverArea,
-} from "../BookList/BookList.styles";
+import { CartActionsNames } from "../../actions/cart.actions";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
-import React from "react";
-import { CartActionsNames } from "../../actions/cart.actions";
+
+import {
+  BookInCartCurrency,
+  BookInCartCurrencySpace,
+  BookInCartPrice,
+  BookInCartPriceWrapper,
+  BookInCartSection,
+  BookInCartTitle,
+  BookInCartTitleAreaWrapper,
+  CartSection,
+  CounterQuantity,
+  CounterWrapper,
+  CoverAreaWrapper,
+  CoverBookInCart,
+  CoverBookInCartArea,
+  RemoveBookFromCartWrapper,
+} from "./CartListItem.styles";
 
 export function CartListItem(props: {
   book: CartBook;
@@ -16,77 +29,66 @@ export function CartListItem(props: {
   onIncrementClick: () => { payload: number; type: CartActionsNames };
   onRemoveFromCartClick: () => void;
 }) {
+  const plusStyles = {
+    paddingRight: "0.5rem",
+    cursor: "pointer",
+    transition: "0.3s",
+  };
+  const minusStyles = {
+    paddingLeft: "0.5rem",
+    cursor: "pointer",
+    transition: "0.3s",
+  };
+
+  const crossStyles = {
+    paddingLeft: "0.5rem",
+    marginRight: "15px",
+    cursor: "pointer",
+    transition: "0.3s",
+  };
+
   return (
-    <BookSection>
-      <div
-        style={{
-          justifyContent: "space-between",
-          display: "flex",
-          flex: 1,
-        }}
-      >
-        <div style={{ flex: 2 }}>
-          <CoverArea>
-            <Cover coverUrl={props.book.cover_url} />
-          </CoverArea>
-        </div>
-        <div
-          style={{
-            flex: 2,
-            alignItems: "center",
-            justifyContent: "center",
-            display: "flex",
-          }}
-        >
-          <BookTitle>{props.book.title}</BookTitle>
-        </div>
-        <div
-          style={{
-            flex: 1,
-            alignItems: "center",
-            justifyContent: "center",
-            display: "flex",
-          }}
-        >
-          <BookTitle>
+    <CartSection>
+      <BookInCartSection>
+        <CoverAreaWrapper>
+          <CoverBookInCartArea>
+            <CoverBookInCart coverUrl={props.book.cover_url} />
+          </CoverBookInCartArea>
+        </CoverAreaWrapper>
+        <BookInCartTitleAreaWrapper>
+          <BookInCartTitle>{props.book.title}</BookInCartTitle>
+        </BookInCartTitleAreaWrapper>
+        <BookInCartPriceWrapper>
+          <BookInCartPrice>
             {((props.book.price / 100) * props.book.quantity).toFixed(2)}
-          </BookTitle>
-          <div style={{ width: 5 }} />
-          <BookTitle>{props.book.currency}</BookTitle>
-        </div>
-        <div
-          style={{
-            flex: 0.75,
-            alignItems: "center",
-            justifyContent: "center",
-            display: "flex",
-          }}
-        >
+          </BookInCartPrice>
+          <BookInCartCurrencySpace />
+          <BookInCartCurrency>{props.book.currency}</BookInCartCurrency>
+        </BookInCartPriceWrapper>
+        <CounterWrapper>
           <FontAwesomeIcon
             onClick={props.onIncrementClick}
-            style={{ paddingRight: "0.5rem", transition: "0.3s" }}
+            style={plusStyles}
             icon={faPlus}
+            size="lg"
           />
-          <p>{props.book.quantity}</p>
+          <CounterQuantity>{props.book.quantity}</CounterQuantity>
           <FontAwesomeIcon
             onClick={props.onDecrementClick}
-            style={{ paddingLeft: "0.5rem", transition: "0.3s" }}
+            style={minusStyles}
             icon={faMinus}
+            size="lg"
           />
-        </div>
-        <div style={{ display: "flex", alignItems: "center" }}>
+        </CounterWrapper>
+        <RemoveBookFromCartWrapper>
           <FontAwesomeIcon
             onClick={props.onRemoveFromCartClick}
-            style={{
-              paddingLeft: "0.5rem",
-              marginRight: "15px",
-              transition: "0.3s",
-            }}
+            style={crossStyles}
             icon={faTimes}
             size={"3x"}
           />
-        </div>
-      </div>
-    </BookSection>
+        </RemoveBookFromCartWrapper>
+      </BookInCartSection>
+    </CartSection>
   );
 }
