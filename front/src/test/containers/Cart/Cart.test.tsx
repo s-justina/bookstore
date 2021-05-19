@@ -3,10 +3,10 @@ import * as reactRedux from "react-redux";
 import configureStore from "redux-mock-store";
 import { configure, mount, ReactWrapper } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
-import { CartActionsNames } from "../../actions/cart.actions";
-import Cart from "../../containers/Cart";
-import { OrderActionsNames } from "../../actions/order.actions";
-import { countCartTotalPrice } from "../../containers/Cart/utils";
+import { CartActionsNames } from "../../../actions/cart.actions";
+import Cart from "../../../containers/Cart";
+import { OrderActionsNames } from "../../../actions/order.actions";
+import { countCartTotalPrice } from "../../../containers/Cart/utils";
 
 configure({ adapter: new Adapter() });
 const mockStore = configureStore();
