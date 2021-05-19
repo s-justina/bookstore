@@ -67,6 +67,7 @@ export function CartListItem(props: {
         </BookInCartPriceWrapper>
         <CounterWrapper>
           <FontAwesomeIcon
+            className={"increment-icon"}
             onClick={props.onIncrementClick}
             style={plusStyles}
             icon={faPlus}
@@ -74,6 +75,7 @@ export function CartListItem(props: {
           />
           <CounterQuantity>{props.book.quantity}</CounterQuantity>
           <FontAwesomeIcon
+            className={"decrement-icon"}
             onClick={props.onDecrementClick}
             style={minusStyles}
             icon={faMinus}
@@ -82,6 +84,7 @@ export function CartListItem(props: {
         </CounterWrapper>
         <RemoveBookFromCartWrapper>
           <FontAwesomeIcon
+            className={"remove-book-icon"}
             onClick={props.onRemoveFromCartClick}
             style={crossStyles}
             icon={faTimes}

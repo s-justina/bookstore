@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { CartActionsNames } from "../../actions/cart.actions";
 import { CartBook } from "../../reducers/cart.reducer";
@@ -8,9 +8,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
 
 import { BuyBooksBtn, TotalPriceInfo } from "../../components/Cart/Cart.styles";
-import { useSelector } from "react-redux";
-import { AppState } from "../../reducers/root.reducer";
-import { OrderSummary } from "../../reducers/order.reducer";
 
 interface CartProps {
   onDecrementClick: (
@@ -23,6 +20,7 @@ interface CartProps {
   onNextButtonPress: () => void;
   cartTotalPrice: string;
   cart: CartBook[];
+  lockBtn: boolean;
 }
 
 const Cart: React.FC<CartProps> = ({
@@ -32,13 +30,8 @@ const Cart: React.FC<CartProps> = ({
   onNextButtonPress,
   cartTotalPrice,
   cart,
+  lockBtn,
 }) => {
-  const [lockBtn, setLockBtn] = useState(false);
-
-  useEffect(() => {
-    cartTotalPrice === "0.00 PLN" ? setLockBtn(true) : setLockBtn(false);
-  }, [cartTotalPrice]);
-
   const arrowStyles = {
     paddingLeft: "0.5rem",
     marginRight: "15px",
@@ -65,30 +58,27 @@ const Cart: React.FC<CartProps> = ({
     });
   };
 
-  const renderInformation = () => {
-    console.log(cartTotalPrice);
-    return cartTotalPrice === "0.00 PLN" ? (
-      <p>Pusty koszyk!</p>
-    ) : (
-      <p>Wartość zamówienia: {cartTotalPrice}</p>
-    );
-  };
-
-  const renderBtn = () => {
-    return lockBtn ? (
-      <FontAwesomeIcon icon={"sad-tear"} style={sadTearStyles} />
-    ) : (
-      <FontAwesomeIcon icon={faArrowRight} style={arrowStyles} />
-    );
-  };
-
   return (
     <>
       {renderCart()}
-      <TotalPriceInfo>{renderInformation()}</TotalPriceInfo>
-      <BuyBooksBtn disabled={lockBtn} onClick={onNextButtonPress}>
+      <TotalPriceInfo>
+        {cartTotalPrice === "0.00 PLN" ? (
+          <p>Pusty koszyk!</p>
+        ) : (
+          <p>Wartość zamówienia: {cartTotalPrice}</p>
+        )}
+      </TotalPriceInfo>
+      <BuyBooksBtn
+        className={"next-button"}
+        disabled={lockBtn}
+        onClick={onNextButtonPress}
+      >
         {lockBtn ? "Pusto tu" : "Dalej"}
-        {renderBtn()}
+        {lockBtn ? (
+          <FontAwesomeIcon icon={"sad-tear"} style={sadTearStyles} />
+        ) : (
+          <FontAwesomeIcon icon={faArrowRight} style={arrowStyles} />
+        )}
       </BuyBooksBtn>
     </>
   );

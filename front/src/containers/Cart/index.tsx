@@ -1,6 +1,6 @@
-import Cart from "../../pages/Cart";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { AppState } from "../../reducers/root.reducer";
 import { CartBook } from "../../reducers/cart.reducer";
 import {
@@ -10,11 +10,13 @@ import {
   removeFromCart,
 } from "../../actions/cart.actions";
 import { setOrderSummary } from "../../actions/order.actions";
-import { useHistory } from "react-router-dom";
+import Cart from "../../pages/Cart";
+import { countCartTotalPrice, formatCartTotalPrice } from "./utils";
 
 const CartContainer = () => {
   const cart = useSelector<AppState, CartBook[]>((state) => state.cart);
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
+  const [lockBtn, setLockBtn] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -23,20 +25,11 @@ const CartContainer = () => {
   };
 
   useEffect(() => {
-    setCartTotalPrice(countCartTotalPrice());
-  }, [cart]);
-
-  const countCartTotalPrice = () => {
-    return (
-      cart.reduce((acc, curr) => {
-        return acc + curr.quantity * curr.price;
-      }, 0) / 100
-    );
-  };
-
-  const formatCartTotalPrice = (cartTotalPrice: number): string => {
-    return cartTotalPrice.toFixed(2) + " PLN";
-  };
+    setCartTotalPrice(countCartTotalPrice(cart));
+    formatCartTotalPrice(cartTotalPrice) === "0.00 PLN"
+      ? setLockBtn(true)
+      : setLockBtn(false);
+  }, [cart, cartTotalPrice]);
 
   const onDecrementClick = (
     bookID: number
@@ -66,6 +59,7 @@ const CartContainer = () => {
   return (
     <Cart
       cart={cart}
+      lockBtn={lockBtn}
       cartTotalPrice={formatCartTotalPrice(cartTotalPrice)}
       onDecrementClick={onDecrementClick}
       onIncrementClick={onIncrementClick}
