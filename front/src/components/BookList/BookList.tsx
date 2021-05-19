@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import BookListItem from "./BookListItem";
 import { fetchBooks } from "../../utils/API_network_functions";
