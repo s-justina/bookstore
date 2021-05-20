@@ -7,8 +7,3 @@ export interface Book {
   price: number;
   title: string;
 }
-
-export interface BookPropositionProps {
-  key: number,
-  book: Book;
-}
