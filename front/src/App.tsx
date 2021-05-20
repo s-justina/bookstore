@@ -7,6 +7,7 @@ import { store, persistor } from "./reducers/store";
 import Home from "./pages/Home";
 import Cart from "./containers/Cart";
 import Summary from "./pages/Summary";
+import { HomeNav, Navigation } from "./components/Navigation.styles";
 
 function App() {
   return (
@@ -15,13 +16,13 @@ function App() {
         <div className="App">
           <Router>
             <div>
-              <nav>
-                <ul>
+              <Navigation>
+                <ul style={{ listStyle: "none" }}>
                   <li>
-                    <Link to="/">Home</Link>
+                    <HomeNav to="/">Księgarnia</HomeNav>
                   </li>
                 </ul>
-              </nav>
+              </Navigation>
 
               <Switch>
                 <Route exact path="/">
