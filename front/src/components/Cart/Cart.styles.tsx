@@ -1,9 +1,16 @@
 import styled from "styled-components";
 
+export const CartWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+`;
+
 export const TotalPriceInfo = styled.div`
   display: flex;
   justify-content: center;
   align-item: center;
+  margin-top: 3rem;
   font-weight: 700;
   font-size: 3rem;
   background: linear-gradient(to right, #fdfbfb, #ebedee 70%);

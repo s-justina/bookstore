@@ -7,18 +7,11 @@ import { rootReducer } from "./root.reducer";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ['cart'],
-  blacklist: ['books', 'orderSummary']
+  whitelist: ["cart"],
+  blacklist: ["books", "orderSummary"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-
-  export const store = createStore(persistedReducer, applyMiddleware(logger));
-  export const persistor = persistStore(store);
-
-
-
-// const store = createStore(rootReducer, applyMiddleware(logger));
-//
-// export default store
+export const store = createStore(persistedReducer, applyMiddleware(logger));
+export const persistor = persistStore(store);

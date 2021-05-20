@@ -1,10 +1,9 @@
 import React from "react";
-import axios from "axios";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useSelector } from "react-redux";
 import { AppState } from "../../reducers/root.reducer";
-import {BookSummary, OrderSummary} from "../../reducers/order.reducer";
+import { BookSummary, OrderSummary } from "../../reducers/order.reducer";
 import { sendOrder } from "../../utils/API_network_functions";
 
 interface FormData {
@@ -14,7 +13,7 @@ interface FormData {
   zip_code: string;
 }
 
-export interface OrderToSend extends FormData{
+export interface OrderToSend extends FormData {
   order: BookSummary[];
 }
 

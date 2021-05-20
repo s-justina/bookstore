@@ -6,12 +6,12 @@ import {faCode, faHighlighter, faMinus, faPlus, fas, faShoppingCart} from '@fort
 import {faArrowRight} from "@fortawesome/free-solid-svg-icons/faArrowRight";
 
 library.add(
-    faCode,
-    faHighlighter,
-    fas,
-    faShoppingCart,
-    faPlus,
-    faMinus,
-    faArrowRight
-    // more icons go here
+  faCode,
+  faHighlighter,
+  fas,
+  faShoppingCart,
+  faPlus,
+  faMinus,
+  faArrowRight
+  // more icons go here
 );

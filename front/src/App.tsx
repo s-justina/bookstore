@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
 import { store, persistor } from "./reducers/store";
-import Home from "./pages/home";
+import Home from "./pages/Home";
 import Cart from "./containers/Cart";
 import Summary from "./pages/Summary";
 

@@ -7,7 +7,11 @@ import { CartListItem } from "../../components/Cart/CartListItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
 
-import { BuyBooksBtn, TotalPriceInfo } from "../../components/Cart/Cart.styles";
+import {
+  BuyBooksBtn,
+  CartWrapper,
+  TotalPriceInfo,
+} from "../../components/Cart/Cart.styles";
 
 interface CartProps {
   onDecrementClick: (
@@ -60,26 +64,28 @@ const Cart: React.FC<CartProps> = ({
 
   return (
     <>
-      {renderCart()}
-      <TotalPriceInfo>
-        {cartTotalPrice === "0.00 PLN" ? (
-          <p>Pusty koszyk!</p>
-        ) : (
-          <p>Wartość zamówienia: {cartTotalPrice}</p>
-        )}
-      </TotalPriceInfo>
-      <BuyBooksBtn
-        className={"next-button"}
-        disabled={lockBtn}
-        onClick={onNextButtonPress}
-      >
-        {lockBtn ? "Pusto tu" : "Dalej"}
-        {lockBtn ? (
-          <FontAwesomeIcon icon={"sad-tear"} style={sadTearStyles} />
-        ) : (
-          <FontAwesomeIcon icon={faArrowRight} style={arrowStyles} />
-        )}
-      </BuyBooksBtn>
+      <CartWrapper>
+        {renderCart()}
+        <TotalPriceInfo>
+          {cartTotalPrice === "0.00 PLN" ? (
+            <p>Pusty koszyk!</p>
+          ) : (
+            <p>Wartość zamówienia: {cartTotalPrice}</p>
+          )}
+        </TotalPriceInfo>
+        <BuyBooksBtn
+          className={"next-button"}
+          disabled={lockBtn}
+          onClick={onNextButtonPress}
+        >
+          {lockBtn ? "Pusto tu" : "Dalej"}
+          {lockBtn ? (
+            <FontAwesomeIcon icon={"sad-tear"} style={sadTearStyles} />
+          ) : (
+            <FontAwesomeIcon icon={faArrowRight} style={arrowStyles} />
+          )}
+        </BuyBooksBtn>
+      </CartWrapper>
     </>
   );
 };

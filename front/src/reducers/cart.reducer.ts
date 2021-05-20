@@ -1,6 +1,6 @@
 import { REHYDRATE } from "redux-persist/es/constants";
 import { CartActionsNames } from "../actions/cart.actions";
-import { Book } from "../components/BookList/interfaces";
+import { Book } from "../interfaces";
 
 export interface CartBook extends Book {
   quantity: number;

@@ -34,12 +34,12 @@ export const ShoppingCartBtn = styled.button`
     border-radius: 50%;
     border: 0.1rem solid rgba(0, 0, 0, 0.2);
 
-  & svg {
-    padding:0;
-    position: absolute;
-    top: 0.9rem;
-    right: 0.9rem;
-  }
+    & svg {
+      padding: 0;
+      position: absolute;
+      top: 0.9rem;
+      right: 0.9rem;
+    }
 
     &:hover {
       background: #f76707;

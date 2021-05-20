@@ -1,21 +1,11 @@
-import { Book } from "../components/BookList/interfaces";
-import {BookActionsNames} from "../actions/books.actions";
+import { Book } from "../interfaces";
+import { BookActionsNames } from "../actions/books.actions";
 
-const initialState: Book[] = [
-  // {
-  //   author: "",
-  //   cover_url: "",
-  //   currency: "",
-  //   id: 0,
-  //   pages: 0,
-  //   price: 0,
-  //   title: "",
-  // },
-];
+const initialState: Book[] = [];
 
 interface booksAction {
-  payload: any,
-  type: string
+  payload: any;
+  type: string;
 }
 
 const booksReducer = (state = initialState, action: booksAction) => {

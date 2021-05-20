@@ -1,18 +1,12 @@
-import {Book} from "../components/BookList/interfaces";
+import { Book } from "../interfaces";
 
 export enum BookActionsNames {
-    FETCH_BOOKS = 'FETCH_BOOKS'
-}
-
-const addBookToCart = () => {
-    return {
-
-    }
+  FETCH_BOOKS = "FETCH_BOOKS",
 }
 
 export const saveFetchedBooks = (books: Book[]) => {
-    return {
-        type: BookActionsNames.FETCH_BOOKS,
-        payload: books
-    }
-}
+  return {
+    type: BookActionsNames.FETCH_BOOKS,
+    payload: books,
+  };
+};

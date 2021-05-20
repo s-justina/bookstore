@@ -1,4 +1,4 @@
-import { Book } from "../components/BookList/interfaces";
+import { Book } from "../interfaces";
 
 export enum CartActionsNames {
   ADD_TO_CART = "ADD_TO_CART",
